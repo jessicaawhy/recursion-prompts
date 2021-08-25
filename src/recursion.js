@@ -43,13 +43,9 @@ var arraySum = function(array) {
     return array;
   }
 
-  var total = 0;
-
-  for (var i = 0; i < array.length; i++) {
-    total += arraySum(array[i]);
-  }
-
-  return total;
+  return array.reduce((acc, curr) => {
+    return acc +arraySum(curr);
+  }, 0);
 };
 
 // 4. Check if a number is even.
