@@ -29,8 +29,8 @@ var sum = function(array) {
     return array[0];
   }
 
-  var firstItem = array[0];
-  var newArray = array.slice(1);
+  let firstItem = array[0];
+  let newArray = array.slice(1);
   newArray[0] = newArray[0] + firstItem;
 
   return sum(newArray);
@@ -69,11 +69,9 @@ var sumBelow = function(n) {
     return 0;
   }
 
-  if (n < 0) {
-    return n + 1 + sumBelow(n + 1);
-  }
+  let current = n < 0 ? n + 1 : n - 1;
 
-  return n - 1 + sumBelow(n - 1);
+  return current + sumBelow(current);
 };
 
 // 6. Get the integers within a range (x, y).
@@ -81,11 +79,9 @@ var sumBelow = function(n) {
 var range = function(x, y) {
   if (Math.abs(y - x) < 2) return [];
 
-  if (x > y) {
-    return [x - 1].concat(range(x - 1, y));
-  }
+  let current = y < x ? x - 1 : x + 1;
 
-  return [x + 1].concat(range(x + 1, y));
+  return [current].concat(range(current, y));
 };
 
 // 7. Compute the exponent of a number.
