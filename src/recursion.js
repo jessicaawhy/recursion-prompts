@@ -29,9 +29,9 @@ var sum = function(array) {
     return array[0];
   }
 
-  var newArray = array.slice();
-  var lastItem = newArray.pop();
-  newArray[newArray.length - 1] = newArray[newArray.length - 1] + lastItem;
+  var firstItem = array[0];
+  var newArray = array.slice(1);
+  newArray[0] = newArray[0] + firstItem;
 
   return sum(newArray);
 };
