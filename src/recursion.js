@@ -29,8 +29,8 @@ var sum = function(array) {
     return array[0];
   }
 
-  let firstItem = array[0];
-  let newArray = array.slice(1);
+  var firstItem = array[0];
+  var newArray = array.slice(1);
   newArray[0] = newArray[0] + firstItem;
 
   return sum(newArray);
@@ -69,7 +69,7 @@ var sumBelow = function(n) {
     return 0;
   }
 
-  let current = n < 0 ? n + 1 : n - 1;
+  var current = n < 0 ? n + 1 : n - 1;
 
   return current + sumBelow(current);
 };
@@ -77,9 +77,11 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
-  if (Math.abs(y - x) < 2) return [];
+  if (Math.abs(y - x) < 2) {
+    return [];
+  }
 
-  let current = y < x ? x - 1 : x + 1;
+  var current = y < x ? x - 1 : x + 1;
 
   return [current].concat(range(current, y));
 };
@@ -90,11 +92,18 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
-  if (exp === 0) return 1;
-  if (exp === 1) return base;
+  if (exp === 0) {
+    return 1;
+  }
+
+  if (exp === 1) {
+    return base;
+  }
+
   if (exp < 0) {
     return exponent(base, exp + 1) / base;
-  };
+  }
+
   return base * exponent(base, exp - 1);
 };
 
