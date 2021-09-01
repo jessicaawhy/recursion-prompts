@@ -196,6 +196,21 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
 var divide = function(x, y) {
+  if (y === 0) return NaN;
+
+  var modX = x < 0 ? -x : x;
+  var modY = y < 0 ? -y : y;
+  if (modX < modY) return 0;
+
+  if (x > 0 && y > 0) {
+    return 1 + divide(x - y, y);
+  } else if (x < 0 && y < 0) {
+    return 1 + divide(x - y, y);
+  } else if (x > 0 && y < 0) {
+    return -1 + divide(x - modY, y);
+  } else {
+    return -1 + divide(x + y, y);
+  }
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
@@ -273,6 +288,13 @@ var fizzBuzz = function(n) {
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  if (array.length === 0) {
+    return 0;
+  }
+
+  var match = array[0] === value ? 1 : 0;
+
+  return countOccurrence(array.slice(1), value) + match;
 };
 
 // 21. Write a recursive version of map.
@@ -329,6 +351,17 @@ var replaceKeysInObj = function(obj, oldKey, newKey) {
 // fibonacci(5); // [0,1,1,2,3,5]
 // Note: The 0 is not counted.
 var fibonacci = function(n) {
+  var result = [0];
+
+  if (n === 1) {
+    result[1] = 1;
+  }
+
+  if (n > 1) {
+    result[n] = fibonacci()
+  }
+
+
 };
 
 // 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
